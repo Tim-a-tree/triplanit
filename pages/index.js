@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router';
 
 // components
 import TopBar from '../components/topbar';
@@ -7,9 +8,12 @@ import Others from '../components/Others';
 
 // auth
 import { useSession, signIn, signOut, getSession } from 'next-auth/react';
+import TopBarLoggedIn from '../components/topbar_loggedin';
 
 export default function Home() {
+  const router = useRouter();
   const { data: session } = useSession();
+
   <Head>
     <title>HomePage</title>
   </Head>
@@ -17,14 +21,7 @@ export default function Home() {
     return (
       <div>
 
-
-        <TopBar />
-        <div>
-          <p className="text-right pr-5">안녕하세요, {session.user.name}님</p>
-          <div className='p-4'>
-            <button className="float-right h-12 px-6 text-black-700 transition-colors duration-150 bg-blue-200 rounded-lg focus:shadow-outline hover:bg-indigo-800 hover:text-slate-300" type='submit' onClick={() => signOut("google", { callbackUrl: "/" })}>로그아웃</button>
-          </div>
-        </div>
+        <TopBarLoggedIn/>
         <MyTrip />
         <Others />
         {/* <Mapscreen /> */}
@@ -35,7 +32,6 @@ export default function Home() {
     return (
       <div>
 
-
         <TopBar />
         <MyTrip />
         <Others />
@@ -43,6 +39,7 @@ export default function Home() {
       </div>
     );
   }
+  
 }
 
 export const getServerSideProps = async (context) => {
