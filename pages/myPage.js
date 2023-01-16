@@ -9,6 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import TextField from '@mui/material/TextField';
+import TopBarLoggedIn from '../components/topbar_loggedin';
 
 
 export default function MyPage() {
@@ -36,7 +37,7 @@ export default function MyPage() {
                 <Head>
                     <title>My page</title>
                 </Head>
-                <TopBar />
+                <TopBarLoggedIn />
             </div>
 
 
